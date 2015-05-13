@@ -1,0 +1,31 @@
+<div class="login-content teal">
+    <div class="card login z-depth-2">
+        <form role="form">
+            <div class="card-content">
+                <h2>MY GAG</h2>
+                <div class="input-field col s12">
+                    <i class="mdi-action-account-circle prefix"></i>
+                    <input required id="email" type="email" ng-model="email" class="ng-pristine ng-valid ng-touched">
+                    <label for="email" class="">email</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="mdi-content-create prefix"></i>
+                    <input required id="password" type="password" ng-model="pass" class="ng-pristine ng-valid ng-touched">
+                    <label for="password" class="">password</label>
+                </div>
+                <div class="input-field col s12" ng-cloak ng-show="createMode">
+                    <i class="mdi-content-create prefix"></i>
+                    <input required id="confirm" type="password" ng-model="confirm" class="ng-pristine ng-valid ng-touched">
+                    <label for="confirm" class="">confirm password</label>
+                </div>
+            </div>
+            <div class="card-action">
+                <a ng-hide="createMode" ng-click="createMode = true" class="waves-effect waves-light btn-flat">Register</a>
+                <a ng-hide="createMode" ng-click="passwordLogin(email, pass)" class="waves-effect waves-light btn">Log In</a>
+                <a ng-cloak ng-show="createMode" ng-click="createMode = false" class="waves-effect waves-light btn-flat">Cancel</a>
+                <a ng-cloak ng-show="createMode" ng-click="createAccount(email, pass, confirm)" class="waves-effect waves-light btn">Sign Up</a>
+            </div>
+        </form>
+        <p ng-show="err" class="error">{{err}}</p>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<header class="grey lighten-2 z-depth-1" ng-class="{ large: vm.menuClosed, mobile: vm.isMobile }">
+    <div class="header" ng-class="{ large: vm.menuClosed }">
+        <a href="#/" ng-click="vm.menuClosed = !vm.menuClosed"><img class="circle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH0AAAB9CAMAAAC4XpwXAAAAY1BMVEUAAAD////IyMijo6PMzMz6+vrc3Nw0NDR1dXWgoKC2trbw8PDl5eXPz8/p6emzs7MZGRk9PT1cXFyOjo6VlZUoKCipqam8vLxsbGwTExNkZGQeHh5RUVF/f3+FhYULCwtHR0emfZurAAAC2UlEQVRoge2aa5eiMAxAW8aCgPgEH+OL//8rB1CUQlLYaVr37OZ+tceLjW3SFCEYhmEYhmEYhvk/uQSXj7mLQEoZFB9xr2P54GvtX35dypbl1bO7DGWXsPQpT2Sfw92X+2vgbsLvxT1PQbmU6dy5+5Ih7pps69R9PhjcTfgdrv7diLtm58iNBrwXfher3xhwnZB68y9Wk901SUQp302b9M7004V/u8Akaq+wj5ZHEvdmhv7CenuDN76arLR2GwI+24w93cpy9d/QgIfvmf0OsUHp7mQhx3+4/q+6oeFPLOzYpCb9cuaEPefMwh7A3wit5ggZS2wPv5HBWyj81PYE/SNBi4985tMbOHa+hAbTx12Gwyrigqw6Gzua12b6PlIgj2lnx3f47hnida4gtpuy2+sMcQUDTmI3bfTNGaJEt9mGwM5epRG8qkmisarD2l6lETz8YxDYTbnOh70KP5rGPNir/QSvIjSUtgSo7EIcp0x/tsnd2KvVPzb9dS2pJRtKuzgbV5jK6zHu7MbwHx5lpks7lkrfic+tXYh86FbvpO/aLsS+J487n7m3i7K7+QdamenBXq3+Nrn1y0wv9mcrQw2qPE92sV7J1bDC9WWH+aw9/gft59/YLavKFwe1nzROz0M09sfmOt6Ku0pJbn+V7OgB9sGw/LS3a0fjA96Kg47wtvaidxWgYvgi4B5DhY+lHTijLaFGPJL1rexIO2hwhEaPm5mFHG+Ja+GP8La91X0J2ItpUHmbX9ZgwBsWtu1S/Az1/Ooj3sWlaBX3q6g3s0hE+AF3NXVrNoP3RSTuzuha9HgnFmFBejt2/6MjtLJqDkP0tzwDhs3495TT7oXI74Ratqbu1IOU5kIEJjeHP80duiuMTSraizAQrCPrLuA64JWoh/vvlkEHRTkOeA999ft77+FJ51bY8aU/zLOW8hhwnbrm8/OyB8gp/sB7RgzDMAzDMAzD/BX8AKl4HclXTfT4AAAAAElFTkSuQmCC" alt="">
+        </a>
+        <h2 ng-class="{ hidden: vm.menuClosed }">MY GAG</h2>
+    </div>
+    <div ng-hide="vm.isMobile" class="input-field col s12" ng-class="{ large: vm.menuClosed }">
+        <input id="title" type="text" ng-model="vm.memeTitle" class="ng-pristine ng-valid ng-touched">
+        <label for="title" class="">Title</label>
+    </div>
+</header>
+
+
+<div class="side blue-grey darken-3 z-depth-1" ng-class="{ closed: vm.menuClosed, mobile: vm.isMobile }" style="height: {{ vm.mheight }}px">
+    <div class="input-field col s12">
+        <input id="object" type="text" ng-model="objectFilter" class="white-text ng-pristine ng-valid ng-touched">
+        <label for="object" class="">Objects</label>
+    </div>
+    <ul class="collection">
+        <li ng-repeat="object in vm.objects | filter: objectFilter | limitTo : 3" ng-click="vm.addObject(object)" class="collection-item avatar" ng-class="{hover: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+            <img ng-src="{{ object.url }}" alt="" class="circle">
+            <span class="title white-text">{{ object.title }}</span>
+        </li>
+    </ul>
+    <div class="input-field col s12">
+        <input id="object" type="text" ng-model="templateFilter" class="white-text ng-pristine ng-valid ng-touched">
+        <label for="object" class="">Templates</label>
+    </div>
+    <ul class="collection">
+        <li ng-repeat="template in vm.templates | filter: templateFilter | limitTo : 5" ng-click="vm.selectTemplate(template)" class="collection-item avatar" ng-class="{hover: hover, selected: template == vm.meme.template}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+            <img ng-src="{{ template.url }}" alt="" class="circle">
+            <span class="title white-text">{{ template.title }}</span>
+        </li>
+    </ul>
+</div>
+
+<div class="content grey lighten-5" ng-class="{ large: vm.menuClosed, mobile: vm.isMobile }">
+    <div id="memecanvas" class="memecanvas align-center" ng-class="{ mobile : vm.isMobile }">
+        <canvas memecanvas class="z-depth-1" width="500" height="0" id="canvas" val="vm.meme" obj="vm.memeObjects" mwidth="vm.mwidth"></canvas>
+    </div>
+</div>
+
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a id="download" download="{{ vm.memeTitle }}.png" ng-click="vm.downloadMeme()" class="btn-floating btn-large red waves-effect waves-light">
+        <i class="large mdi-file-file-download"></i>
+    </a>
+    <ul>
+        <li><a ng-click="vm.clearMeme()" class="btn-floating blue waves-effect waves-light" style="opacity: 0; -webkit-transform: scaleY(0.4) scaleX(0.4) translateY(40px);"><i class="large mdi-action-delete"></i></a>
+        </li>
+        <li>
+            <a id="upload_link" ng-click="vm.clearMeme()" class="btn-floating teal waves-effect waves-light" style="opacity: 0; -webkit-transform: scaleY(0.4) scaleX(0.4) translateY(40px);"><i class="mdi-file-file-upload"></i></a>
+        </li>
+    </ul>
+
+    <input id="upload" type="file" data-c-on-change="vm.addFile()" />
+</div>
+
+<div id="modalWelcome" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Welcome in MY GAG</h4>
+        <p>MY GAG is an awesome Meme Generator.</p>
+        <p>You can select one of our many templates in the left menu.
+        Then you can customize the text and add objects to your creation.
+        Finally you can download it by clicking the bottom right button!</p>
+        <p>Click on the logo to switch mode.</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#/" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+</div>
+
+<script>
+    $("#upload_link").on('click', function (e) {
+        e.preventDefault();
+        $("#upload").trigger('click');
+    });
+
+    $('#modalWelcome').openModal();
+</script>

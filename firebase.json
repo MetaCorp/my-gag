@@ -1,0 +1,9 @@
+{
+  "firebase": "my-gag",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

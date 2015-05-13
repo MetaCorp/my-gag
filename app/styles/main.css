@@ -1,0 +1,204 @@
+body {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #009688;
+}
+
+header {
+    height: 100px;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+    z-index: 100;
+}
+
+header.mobile {
+    height: 64px;
+}
+
+header .header {
+    width: 340px;
+    height: 100%;
+    transition: background-color 0.5s;
+    background-color: #009688;
+}
+
+header.mobile .header {
+    width: 300px;
+}
+
+header .header.large {
+    background-color: transparent;
+}
+
+header .header img {
+    position: absolute;
+    top: 17px;
+    left: 35px;
+    width: 64px;
+    height: 64px;
+}
+
+header.mobile .header img {
+    top: 10px;
+    left: 35px;
+    width: 42px;
+    height: 42px;
+}
+
+header .header h2 {
+    margin: 0;
+    position: absolute;
+    left: 125px;
+    top: 25px;
+    font-size: large;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+header .header h2.hidden {
+    opacity: 0;
+}
+
+header.mobile .header h2 {
+    left: 95px;
+    top: 6px;
+}
+
+header.mobile .header h2.hidden {
+    opacity: 1;
+}
+
+header .input-field {
+    position: absolute;
+    top: 10px;
+    left: 380px;
+    right: 40px;
+    transition: left 0.5s ease-in-out;
+}
+
+header .input-field.large {
+    left: 125px;
+}
+
+.side {
+    position: relative;
+    width: 340px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 10px 25px;
+    transition: left 0.5s ease-in-out;
+    overflow: scroll;
+    z-index: 100;
+}
+
+.side.mobile {
+    width: 300px;
+}
+
+.side.closed {
+    left: -340px;
+}
+
+.side.mobile.closed {
+    left: -300px;
+}
+
+.side .collection {
+    border: none;
+}
+
+.side .collection .collection-item.avatar.hover,
+.side .collection .collection-item.avatar.selected {
+    background-color: #78909c;
+}
+
+.side .collection .collection-item.avatar {
+    background: transparent;
+    border: none;
+    height: 64px;
+    transition: background-color 0.4s;
+}
+
+.side .collection .collection-item .title {
+    position: relative;
+    font-weight: lighter;
+    top: 10px;
+    left: 5px;
+}
+
+.fixed-action-btn ul {
+    margin: 0 auto;
+}
+
+.content {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100px;
+    left: 340px;
+    right: 0;
+    bottom: 0;
+    transition: left 0.5s ease-in-out;
+}
+
+.content.mobile {
+    left: 0;
+    top: 64px;
+}
+
+.content.large {
+    left: 0;
+}
+
+.memecanvas {
+    margin: 30px auto;
+    width: 500px;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.memecanvas.mobile {
+    margin: 10px 15px;
+}
+
+body {
+    overflow: hidden;
+}
+
+.login-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.card.login {
+    width: 360px;
+    margin: 50px auto;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.login h2 {
+    margin: 5px;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.card.login .card-content {
+    padding-top: 5px;
+}
+
+.fixed-action-btn input {
+    visibility: hidden;
+    position: absolute;
+    right: -500px;
+}
